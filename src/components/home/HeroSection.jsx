@@ -7,10 +7,11 @@ export default function HeroSection() {
     <section className="relative w-screen h-screen overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
-        <img 
-          src="/images/heroBg.png" 
-          alt="Background"
-          className="absolute inset-0 w-full h-full object-cover"
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{
+            backgroundImage: 'url("/images/heroBg.png")'
+          }}
         />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/80" />
