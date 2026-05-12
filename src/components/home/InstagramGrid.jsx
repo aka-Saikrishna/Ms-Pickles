@@ -24,7 +24,7 @@ export default function InstagramGrid() {
 
   return (
     <section className="py-24 bg-surface" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-6">
           <div className="text-center md:text-left space-y-3">
             <span className="label-gold">Social Community</span>
@@ -43,7 +43,7 @@ export default function InstagramGrid() {
           </a>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[150px] md:auto-rows-[200px]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
           {instaImages.map((item, i) => (
             <div
               key={i}
