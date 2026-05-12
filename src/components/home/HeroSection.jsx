@@ -13,7 +13,7 @@ export default function HeroSection() {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=1920&q=80")',
+            backgroundImage: 'url("https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1920&q=80")',
             transform: `scale(1.05) translateY(${offset * 0.1}px)`,
             transition: 'transform 0.05s linear'
           }}
