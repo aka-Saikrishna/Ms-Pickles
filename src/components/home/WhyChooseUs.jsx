@@ -17,7 +17,7 @@ export default function WhyChooseUs() {
     <section className="py-24 md:py-32 bg-surface relative overflow-hidden" ref={ref}>
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 gold-divider" />
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-center mb-16 space-y-4">
           <span className="label-gold">Why Choose Us</span>
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-on-surface">

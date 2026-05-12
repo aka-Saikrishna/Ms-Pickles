@@ -136,7 +136,7 @@
   --container-max: 1400px;
   --gutter: 24px;
   --margin-mobile: 12px;
-  --margin-desktop: 32px;
+  --margin-desktop: 24px;
 
   /* ── Elevation / Shadows ── */
   --shadow-sm: 0 1px 3px rgba(192, 64, 0, 0.04);
