@@ -19,7 +19,7 @@ export default function HeroSection() {
           }}
         />
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/90" />
+        <div className="absolute inset-0 bg-black/70" />
       </div>
 
       {/* Content */}

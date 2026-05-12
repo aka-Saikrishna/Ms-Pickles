@@ -250,9 +250,6 @@ body {
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* ── Links reset ── */
-a { color: ; text-decoration: none; }
-
 /* ── Button reset ── */
 button { background: none; border: none; cursor: pointer; font: inherit; }
 
