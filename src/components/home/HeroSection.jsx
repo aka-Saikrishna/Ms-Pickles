@@ -32,7 +32,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
+              className="font-sans text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
             >
               Authentic <span className="text-amber-400">Flavors</span>,
               <br />
@@ -44,7 +44,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl"
+              className="text-base md:text-lg text-white/90 leading-relaxed max-w-2xl font-medium"
             >
               Traditional Andhra-style pickles handcrafted with farm-fresh ingredients,
               time-honored recipes, and zero preservatives. Taste the heritage in every jar.
@@ -79,8 +79,8 @@ export default function HeroSection() {
                 { value: '4.3', label: 'Rated Stars' },
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <span className="font-serif text-3xl font-bold text-white">{stat.value}</span>
-                  <span className="text-sm text-white/70 font-medium">{stat.label}</span>
+                  <span className="font-sans text-3xl font-extrabold text-white">{stat.value}</span>
+                  <span className="text-sm text-white/80 font-semibold">{stat.label}</span>
                 </div>
               ))}
             </motion.div>

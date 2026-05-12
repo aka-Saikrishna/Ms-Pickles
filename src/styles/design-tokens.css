@@ -3,8 +3,6 @@
    From DESIGN.md: Artisanal Heritage Pickle System
    =================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap');
-
 :root {
   /* ── Surface Colors ── */
   --surface: #fcf9f8;
@@ -75,19 +73,19 @@
   --charcoal: #121212;
 
   /* ── Typography ── */
-  --font-serif: 'Noto Serif', Georgia, serif;
-  --font-sans: 'Poppins', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Nunito', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Nunito', system-ui, -apple-system, sans-serif;
 
   /* Headline XL */
-  --headline-xl-size: 48px;
+  --headline-xl-size: 36px;
   --headline-xl-weight: 700;
-  --headline-xl-line: 56px;
+  --headline-xl-line: 44px;
   --headline-xl-spacing: 0.02em;
 
   /* Headline LG */
-  --headline-lg-size: 32px;
+  --headline-lg-size: 28px;
   --headline-lg-weight: 600;
-  --headline-lg-line: 40px;
+  --headline-lg-line: 36px;
 
   /* Headline MD */
   --headline-md-size: 24px;
