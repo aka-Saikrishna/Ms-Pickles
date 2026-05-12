@@ -23,8 +23,8 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full px-2 md:px-4 pt-20 pb-10 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center h-full">
+      <div className="relative z-10 w-full px-4 md:px-8 pt-24 pb-12 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center h-full">
           {/* Left Content */}
           <div className="space-y-8">
             {/* Heading */}
@@ -32,7 +32,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sans text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-2xl"
+              className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-2xl"
             >
               Authentic <span className="text-amber-300">Flavors</span>,
               <br />
@@ -86,8 +86,8 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right Content - Animated Pickle Jar */}
-          <div className="relative flex items-center justify-center">
+          {/* Right Content - Animated Pickle Jar (Desktop Only) */}
+          <div className="relative flex items-center justify-center hidden lg:flex">
             <motion.div
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
