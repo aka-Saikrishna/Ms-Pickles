@@ -13,16 +13,16 @@ export default function HeroSection() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: 'url("https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1920&q=80")',
-            transform: `scale(1.1) translateY(${offset * 0.15}px)`,
-            transition: 'transform 0.1s ease-out'
+            transform: `scale(1.05) translateY(${offset * 0.1}px)`,
+            transition: 'transform 0.05s linear'
           }}
         />
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-24 py-20">
+      <div className="relative z-10 w-full px-6 md:px-12 lg:px-24 pt-32 pb-20">
         <div className="max-w-3xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">

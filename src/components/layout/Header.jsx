@@ -8,6 +8,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { totalItems } = useCart();
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -28,29 +29,26 @@ export default function Header() {
 
   return (
     <>
-      {/* Announcement Bar */}
-      <div className="bg-charcoal text-gold-light text-xs py-1.5 relative z-[1001]">
-        <div className="max-w-[1280px] mx-auto px-4 md:px-16 flex items-center justify-between gap-6">
-          <a href="tel:+918074638357" className="flex items-center gap-1.5 text-gold hover:underline">
-            <Phone size={13} strokeWidth={2} />
-            +91 8074638357
-          </a>
-          <span className="label-gold hidden md:block">Free Shipping on Orders Above Rs.1499</span>
-          <span className="label-gold hidden lg:block">International Delivery Available</span>
-        </div>
-      </div>
-
       {/* Header */}
-      <header className={`sticky top-0 z-[1000] transition-all duration-300
-        ${scrolled ? 'bg-surface/97 shadow-md border-b border-outline-variant' : 'glass border-b border-transparent'}`}
+      <header className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300
+        ${scrolled 
+          ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-gray-200' 
+          : isHomePage 
+            ? 'bg-transparent' 
+            : 'bg-white/95 backdrop-blur-md shadow-md border-b border-gray-200'
+        }`}
       >
-        <div className="max-w-[1280px] mx-auto px-4 md:px-16 flex items-center justify-between h-[72px]">
+        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 shrink-0">
             <img src="/logo-light.png" alt="MS Homemade Pickles" className="w-12 h-12 rounded-full object-cover" />
             <div className="flex flex-col">
-              <span className="font-serif text-lg font-bold text-on-surface tracking-tight">MS Pickles</span>
-              <span className="text-[11px] text-gold-dark font-medium tracking-widest uppercase">Homemade Heritage</span>
+              <span className={`font-serif text-lg font-bold tracking-tight ${scrolled || !isHomePage ? 'text-gray-900' : 'text-white'}`}>
+                MS Pickles
+              </span>
+              <span className={`text-[11px] font-medium tracking-widest uppercase ${scrolled || !isHomePage ? 'text-amber-600' : 'text-amber-300'}`}>
+                Homemade Heritage
+              </span>
             </div>
           </Link>
 
@@ -61,10 +59,13 @@ export default function Header() {
                 key={link.to}
                 to={link.to}
                 className={`relative text-sm font-medium py-1.5 transition-colors duration-150 group
-                  ${location.pathname === link.to ? 'text-gold-dark' : 'text-on-surface-variant hover:text-gold-dark'}`}
+                  ${scrolled || !isHomePage 
+                    ? location.pathname === link.to ? 'text-amber-600' : 'text-gray-600 hover:text-amber-600' 
+                    : location.pathname === link.to ? 'text-amber-300' : 'text-white hover:text-amber-300'
+                  }`}
               >
                 {link.label}
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gold transition-transform duration-300 origin-center
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-amber-400 transition-transform duration-300 origin-center
                   ${location.pathname === link.to ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
               </Link>
             ))}
@@ -72,16 +73,21 @@ export default function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            <Link to="/cart" className="relative flex items-center justify-center w-11 h-11 rounded-full transition-colors hover:bg-surface-container hover:text-gold-dark" aria-label="Shopping cart">
+            <Link to="/cart" className={`relative flex items-center justify-center w-11 h-11 rounded-full transition-colors
+              ${scrolled || !isHomePage 
+                ? 'text-gray-700 hover:bg-gray-100' 
+                : 'text-white hover:bg-white/10'
+              }`} aria-label="Shopping cart">
               <ShoppingBag size={22} strokeWidth={1.8} />
               {totalItems > 0 && (
-                <span className="absolute top-1 right-1 min-w-[18px] h-[18px] rounded-full bg-gold text-charcoal text-[11px] font-bold flex items-center justify-center animate-scale-in">
+                <span className="absolute top-1 right-1 min-w-[18px] h-[18px] rounded-full bg-amber-400 text-gray-900 text-[11px] font-bold flex items-center justify-center animate-scale-in">
                   {totalItems}
                 </span>
               )}
             </Link>
             <button
-              className="lg:hidden flex items-center justify-center w-11 h-11 rounded-md text-on-surface"
+              className={`lg:hidden flex items-center justify-center w-11 h-11 rounded-md
+                ${scrolled || !isHomePage ? 'text-gray-700' : 'text-white'}`}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
