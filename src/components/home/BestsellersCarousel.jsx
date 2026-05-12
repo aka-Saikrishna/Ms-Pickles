@@ -40,7 +40,7 @@ export default function BestsellersCarousel() {
               className="min-w-[240px] md:min-w-[280px] snap-start group bg-white rounded-3xl border border-gray-200 overflow-hidden"
             >
               {/* Product Image */}
-              <Link to={`/product/${product.id}`} className="block relative aspect-square overflow-hidden p-4">
+              <Link to={`/product/${product.id}`} className="block relative aspect-square overflow-hidden p-2">
                 <img 
                   src={product.image} 
                   alt={product.name}
@@ -48,14 +48,14 @@ export default function BestsellersCarousel() {
                 />
                 {/* Sale Badge */}
                 {product.tags.includes('BESTSELLER') && (
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-gray-800 text-white text-xs font-semibold rounded-full">
+                  <div className="absolute top-2 right-2 px-3 py-1 bg-gray-800 text-white text-xs font-semibold rounded-full">
                     Sale!
                   </div>
                 )}
               </Link>
 
               {/* Content */}
-              <div className="p-4 space-y-3">
+              <div className="p-3 space-y-2">
                 <div>
                   <Link to={`/product/${product.id}`} className="block">
                     <h3 className="font-medium text-gray-900 text-base leading-snug hover:text-gray-600 transition-colors">
