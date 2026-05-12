@@ -81,7 +81,7 @@ export default function HeroSection() {
             </div>
 
             {/* Right Content - Animated Pickle Jar */}
-            <div className="relative flex items-center justify-center">
+            <div className="relative flex items-center justify-center jar-parent">
               <motion.div
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -91,7 +91,7 @@ export default function HeroSection() {
                   type: "spring",
                   stiffness: 50
                 }}
-                className="relative"
+                className="relative jar-card"
               >  
                 {/* Pickle Jar */}
                 <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden flex items-center justify-center border-4 border-white/30 shadow-2xl">
