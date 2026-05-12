@@ -259,17 +259,3 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 
 /* ── Image defaults ── */
 img { max-width: 100%; height: auto; display: block; }
-
-/* ── 3D Jar Hover Effect ── */
-.jar-parent {
-  perspective: 1000px;
-}
-
-.jar-card {
-  transform-style: preserve-3d;
-  transition: all 0.5s ease-in-out;
-}
-
-.jar-card:hover {
-  transform: rotate3d(0.5, 1, 0, 30deg);
-}
