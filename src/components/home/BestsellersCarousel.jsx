@@ -40,11 +40,11 @@ export default function BestsellersCarousel() {
               className="min-w-[240px] md:min-w-[280px] snap-start group bg-white rounded-3xl border border-gray-200 overflow-hidden"
             >
               {/* Product Image */}
-              <Link to={`/product/${product.id}`} className="block relative aspect-square overflow-hidden p-2">
+              <Link to={`/product/${product.id}`} className="block relative aspect-[4/3] overflow-hidden p-1">
                 <img 
                   src={product.image} 
                   alt={product.name}
-                  className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 {/* Sale Badge */}
                 {product.tags.includes('BESTSELLER') && (
