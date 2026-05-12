@@ -2,7 +2,7 @@ import { useScrollReveal, useParallax } from '../../hooks/useScrollReveal';
 
 export default function RecipeIdeas() {
   const [ref, visible] = useScrollReveal(0.1);
-  const [pRef, offset] = useParallax(0.15);
+  const [pRef, offset] = useParallax(0.5);
 
   const recipes = [
     { title: 'Perfect with Hot Rice', desc: 'Mix a spoonful of pickle with steaming hot rice and a dash of ghee. The heat releases the rich aroma of spices, creating the ultimate comfort meal — a staple in every Andhra household.', accent: 'gold' },
@@ -13,23 +13,29 @@ export default function RecipeIdeas() {
 
   return (
     <section className="py-24 bg-surface-container relative overflow-hidden" ref={ref}>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Images Grid */}
           <div className="relative h-[500px] md:h-[600px]" ref={pRef}>
             <div
               className={`absolute top-0 left-0 w-2/3 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
-              style={{ transform: `translateY(${offset * 0.2}px)` }}
+              style={{ transform: `translateY(${offset * 0.4}px)` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/40 to-spice/20" />
-              <div className="absolute inset-0 flex items-center justify-center text-white/20 font-serif text-8xl">Recipe</div>
+              <img 
+                src="/images/chicken.jpeg" 
+                alt="Chicken Pickle"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div
               className={`absolute bottom-0 right-0 w-2/3 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
-              style={{ transform: `translateY(${-offset * 0.4}px)` }}
+              style={{ transform: `translateY(${-offset * 0.6}px)` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-terracotta/40 to-gold/20" />
-              <div className="absolute inset-0 flex items-center justify-center text-white/20 font-serif text-8xl">Story</div>
+              <img 
+                src="/images/recip.png" 
+                alt="Pickle Recipe"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
@@ -37,9 +43,9 @@ export default function RecipeIdeas() {
           <div className={`space-y-12 transition-all duration-1000 delay-500 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
             <div className="space-y-4">
               <span className="label-gold">Serving Suggestions</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-bold text-on-surface">
+              <h2 className="font-sans text-4xl md:text-5xl font-extrabold text-on-surface">
                 One Pickle, <br />
-                <span className="text-gold-dark italic">Multiple Ways</span>
+                <span className="text-gold-dark">Multiple Ways</span>
               </h2>
               <p className="text-on-surface-variant text-lg">
                 Our pickles aren't just sides; they are versatile culinary companions that transform every meal into a gourmet experience.
@@ -50,10 +56,10 @@ export default function RecipeIdeas() {
               {recipes.map((recipe, i) => (
                 <div key={i} className="flex gap-6 items-start group">
                   <div className="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
-                    <span className="font-serif text-xl font-bold text-gold-dark">{i + 1}</span>
+                    <span className="font-sans text-xl font-extrabold text-gold-dark">{i + 1}</span>
                   </div>
                   <div className="space-y-1">
-                    <h3 className="font-serif text-xl font-bold text-on-surface group-hover:text-gold-dark transition-colors">{recipe.title}</h3>
+                    <h3 className="font-sans text-xl font-extrabold text-on-surface group-hover:text-gold-dark transition-colors">{recipe.title}</h3>
                     <p className="text-on-surface-variant text-sm leading-relaxed">{recipe.desc}</p>
                   </div>
                 </div>

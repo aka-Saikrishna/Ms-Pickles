@@ -4,7 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function HeroSection() {
-  const [parallaxRef, offset] = useParallax(0.3);
+  const [parallaxRef, offset] = useParallax(0.6);
 
   return (
     <section ref={parallaxRef} className="relative h-screen flex items-center overflow-hidden">
