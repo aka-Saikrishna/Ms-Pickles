@@ -16,9 +16,9 @@ export default function RecipeIdeas() {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Images Grid */}
-          <div className="relative h-[380px] md:h-[480px]" ref={pRef}>
+          <div className="relative h-[400px] md:h-[500px]" ref={pRef}>
             <div
-              className={`absolute top-0 left-0 w-[55%] h-[60%] rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
+              className={`absolute top-0 left-0 w-[60%] h-[65%] rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
               style={{ transform: `translateY(${offset * 0.4}px)` }}
             >
               <img 
@@ -28,7 +28,7 @@ export default function RecipeIdeas() {
               />
             </div>
             <div
-              className={`absolute bottom-0 right-0 w-[55%] h-[60%] rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
+              className={`absolute bottom-0 right-0 w-[60%] h-[65%] rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
               style={{ transform: `translateY(${-offset * 0.6}px)` }}
             >
               <img 
