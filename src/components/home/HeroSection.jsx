@@ -98,7 +98,7 @@ export default function HeroSection() {
               className="relative"
             >  
               {/* Pickle Jar */}
-              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-amber-100/30 to-orange-100/30 overflow-hidden flex items-center justify-center border-4 border-white shadow-2xl">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-md bg-gradient-to-br from-amber-100/30 to-orange-100/30 overflow-hidden flex items-center justify-center border-4 border-white shadow-2xl">
                 <img 
                   src="/images/single jar.png" 
                   alt="Pickle Jar" 
