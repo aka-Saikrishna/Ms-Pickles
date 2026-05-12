@@ -22,9 +22,9 @@ export default function BestsellersCarousel() {
 
   return (
     <section className="py-24 overflow-hidden" style={{ backgroundColor: '#fdf7f2' }}>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-gray-900">
+          <h2 className="font-sans text-4xl md:text-5xl font-extrabold text-gray-900">
             Shop bestsellers
           </h2>
         </div>
@@ -40,7 +40,7 @@ export default function BestsellersCarousel() {
               className="min-w-[240px] md:min-w-[280px] snap-start group bg-white rounded-3xl border border-gray-200 overflow-hidden"
             >
               {/* Product Image */}
-              <Link to={`/product/${product.id}`} className="block relative aspect-square overflow-hidden p-6">
+              <Link to={`/product/${product.id}`} className="block relative aspect-square overflow-hidden p-4">
                 <img 
                   src={product.image} 
                   alt={product.name}
@@ -55,7 +55,7 @@ export default function BestsellersCarousel() {
               </Link>
 
               {/* Content */}
-              <div className="p-6 pt-0 space-y-4">
+              <div className="p-4 space-y-3">
                 <div>
                   <Link to={`/product/${product.id}`} className="block">
                     <h3 className="font-medium text-gray-900 text-base leading-snug hover:text-gray-600 transition-colors">
