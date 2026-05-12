@@ -19,11 +19,11 @@ export default function HeroSection() {
           }}
         />
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/75" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-24 pt-20 pb-10">
+      <div className="relative z-10 w-full px-4 md:px-8 pt-20 pb-10 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center h-full">
           {/* Left Content */}
           <div className="space-y-8">
@@ -32,11 +32,11 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sans text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
+              className="font-sans text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-lg"
             >
-              Authentic <span className="text-amber-400">Flavors</span>,
+              Authentic <span className="text-amber-300">Flavors</span>,
               <br />
-              Straight From <span className="text-orange-300">The Kitchen</span>
+              Straight From <span className="text-orange-200">The Kitchen</span>
             </motion.h1>
 
             {/* Description */}
@@ -44,7 +44,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base md:text-lg text-white/90 leading-relaxed max-w-2xl font-medium"
+              className="text-base md:text-lg text-white leading-relaxed max-w-2xl font-semibold drop-shadow"
             >
               Traditional Andhra-style pickles handcrafted with farm-fresh ingredients,
               time-honored recipes, and zero preservatives. Taste the heritage in every jar.
@@ -79,8 +79,8 @@ export default function HeroSection() {
                 { value: '4.3', label: 'Rated Stars' },
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <span className="font-sans text-3xl font-extrabold text-white">{stat.value}</span>
-                  <span className="text-sm text-white/80 font-semibold">{stat.label}</span>
+                  <span className="font-sans text-3xl font-extrabold text-white drop-shadow">{stat.value}</span>
+                  <span className="text-sm text-white font-semibold drop-shadow">{stat.label}</span>
                 </div>
               ))}
             </motion.div>
