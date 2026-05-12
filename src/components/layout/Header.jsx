@@ -39,7 +39,7 @@ export default function Header() {
         }`}
         style={{ opacity: 1, visibility: 'visible' }}
       >
-        <div className="max-w-8xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 shrink-0">
             <img src="/logo-light.png" alt="MS Homemade Pickles" className="w-12 h-12 rounded-full object-cover" />

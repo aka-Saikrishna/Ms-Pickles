@@ -10,7 +10,7 @@ const badges = [
 export default function TrustBadges() {
   return (
     <section className="py-12 border-t border-b border-outline-variant/30 bg-surface-lowest">
-      <div className="max-w-8xl mx-auto px-4 md:px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {badges.map((badge, i) => (
             <div key={i} className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-4">

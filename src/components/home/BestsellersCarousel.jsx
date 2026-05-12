@@ -22,7 +22,7 @@ export default function BestsellersCarousel() {
 
   return (
     <section className="py-24 overflow-hidden" style={{ backgroundColor: '#fdf7f2' }}>
-      <div className="max-w-8xl mx-auto px-4 md:px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="font-sans text-4xl md:text-5xl font-extrabold text-gray-900">
             Shop bestsellers
