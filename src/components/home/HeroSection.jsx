@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal, useParallax } from '../../hooks/useScrollReveal';
-import { ChevronRight, Sparkles } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function HeroSection() {
@@ -27,17 +27,6 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8">
-            {/* Badge */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
-            >
-              <Sparkles size={14} className="text-white" />
-              <span className="text-xs font-semibold text-white tracking-wider uppercase">Handcrafted with Love</span>
-            </motion.div>
-
             {/* Heading */}
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
