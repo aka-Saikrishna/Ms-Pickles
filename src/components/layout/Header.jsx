@@ -37,6 +37,7 @@ export default function Header() {
             ? 'bg-transparent' 
             : 'bg-white/95 backdrop-blur-md shadow-md border-b border-gray-200'
         }`}
+        style={{ opacity: 1, visibility: 'visible' }}
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-20">
           {/* Logo */}
