@@ -26,13 +26,13 @@ export default function HeroSection() {
       <div className="relative z-10 w-full px-4 md:px-8 pt-24 pb-12 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center h-full">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             {/* Heading */}
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-2xl"
+              className="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight drop-shadow-2xl"
             >
               Authentic <span className="text-amber-300">Flavors</span>,
               <br />
@@ -44,7 +44,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base md:text-lg text-white leading-relaxed max-w-2xl font-bold drop-shadow-lg"
+              className="text-sm md:text-base text-white leading-relaxed max-w-2xl font-semibold drop-shadow-lg"
             >
               Traditional Andhra-style pickles handcrafted with farm-fresh ingredients,
               time-honored recipes, and zero preservatives. Taste the heritage in every jar.
@@ -55,13 +55,13 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-3"
             >
-              <Link to="/shop" className="inline-flex items-center gap-2 px-8 py-4 bg-amber-400 text-gray-900 font-semibold rounded-full text-base hover:bg-amber-300 transition-all duration-300 group">
+              <Link to="/shop" className="inline-flex items-center gap-2 px-6 py-3 bg-amber-400 text-gray-900 font-semibold rounded-full text-sm hover:bg-amber-300 transition-all duration-300 group">
                 Explore Our Collection
-                <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/about" className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-bold rounded-full text-base hover:bg-white/10 transition-all duration-300 drop-shadow-lg">
+              <Link to="/about" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold rounded-full text-sm hover:bg-white/10 transition-all duration-300 drop-shadow-lg">
                 Our Story
               </Link>
             </motion.div>
@@ -71,16 +71,16 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-8"
+              className="flex flex-wrap items-center gap-6"
             >
               {[
                 { value: '20+', label: 'Pickle Varieties' },
                 { value: '80K+', label: 'Happy Families' },
                 { value: '4.3', label: 'Rated Stars' },
               ].map((stat, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span className="font-sans text-3xl font-extrabold text-white drop-shadow-2xl">{stat.value}</span>
-                  <span className="text-sm text-white font-bold drop-shadow-lg">{stat.label}</span>
+                <div key={i} className="flex items-center gap-2">
+                  <span className="font-sans text-2xl font-extrabold text-white drop-shadow-2xl">{stat.value}</span>
+                  <span className="text-xs text-white font-semibold drop-shadow-lg">{stat.label}</span>
                 </div>
               ))}
             </motion.div>
