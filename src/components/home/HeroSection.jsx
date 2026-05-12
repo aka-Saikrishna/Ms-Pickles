@@ -13,7 +13,7 @@ export default function HeroSection() {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1920&q=80")',
+            backgroundImage: 'url("/images/openart-sample_1778586591854_abb72de3.png")',
             transform: `scale(1.05) translateY(${offset * 0.1}px)`,
             transition: 'transform 0.05s linear'
           }}
@@ -106,7 +106,7 @@ export default function HeroSection() {
               {/* Pickle Jar */}
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-amber-100/30 to-orange-100/30 overflow-hidden flex items-center justify-center border-4 border-white shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" 
+                  src="/images/openart-sample_1778586591854_abb72de3.png" 
                   alt="Pickle Jar" 
                   className="w-full h-full object-cover"
                 />
