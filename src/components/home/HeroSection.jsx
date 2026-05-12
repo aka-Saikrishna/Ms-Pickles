@@ -61,7 +61,7 @@ export default function HeroSection() {
                 Explore Our Collection
                 <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/about" className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-semibold rounded-full text-base hover:bg-white/10 transition-all duration-300">
+              <Link to="/about" className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-bold rounded-full text-base hover:bg-white/10 transition-all duration-300 drop-shadow-lg">
                 Our Story
               </Link>
             </motion.div>
