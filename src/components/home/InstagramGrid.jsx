@@ -12,23 +12,23 @@ export default function InstagramGrid() {
   const [ref, visible] = useScrollReveal(0.1);
 
   const instaImages = [
-    'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&q=80',
-    'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=400&q=80',
-    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80',
-    'https://images.unsplash.com/photo-1590779033100-9f60705a2f3b?w=400&q=80',
-    'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80',
-    'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=400&q=80',
-    'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&q=80',
-    'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=400&q=80',
+    { url: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&q=80', w: 1, h: 1 },
+    { url: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=400&q=80', w: 1, h: 2 },
+    { url: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80', w: 1, h: 1 },
+    { url: 'https://images.unsplash.com/photo-1590779033100-9f60705a2f3b?w=400&q=80', w: 2, h: 1 },
+    { url: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', w: 1, h: 1 },
+    { url: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=400&q=80', w: 1, h: 1 },
+    { url: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&q=80', w: 1, h: 1 },
+    { url: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=400&q=80', w: 1, h: 1 },
   ];
 
   return (
     <section className="py-24 bg-surface" ref={ref}>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-6">
           <div className="text-center md:text-left space-y-3">
             <span className="label-gold">Social Community</span>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-on-surface">
+            <h2 className="font-sans text-4xl md:text-5xl font-extrabold text-on-surface">
               Join our <span className="text-gold-dark">Family</span>
             </h2>
           </div>
@@ -43,16 +43,20 @@ export default function InstagramGrid() {
           </a>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {instaImages.map((img, i) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+          {instaImages.map((item, i) => (
             <div
               key={i}
-              className={`aspect-square relative rounded-xl overflow-hidden group transition-all duration-700 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-              style={{ transitionDelay: `${i * 100}ms` }}
+              className={`relative rounded-xl overflow-hidden group transition-all duration-700 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+              style={{ 
+                transitionDelay: `${i * 100}ms`,
+                gridColumn: `span ${item.w}`,
+                gridRow: `span ${item.h}`
+              }}
             >
               {/* Background Image */}
               <img 
-                src={img} 
+                src={item.url} 
                 alt="Instagram post"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
