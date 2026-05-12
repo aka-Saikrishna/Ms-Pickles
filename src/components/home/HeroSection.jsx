@@ -6,77 +6,20 @@ import { motion } from 'framer-motion';
 export default function HeroSection() {
   const [parallaxRef, offset] = useParallax(0.6);
 
-  const leafVariants = {
-    float: {
-      y: [0, -20, 0],
-      rotate: [0, 5, 0, -5, 0],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
-
   return (
-    <section ref={parallaxRef} className="relative h-screen flex items-center overflow-hidden bg-[#121212]">
-      {/* SVG Background Animations - Floating Leaves */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.svg 
-          className="absolute top-20 right-20 w-24 h-24 text-green-700/30"
-          variants={leafVariants}
-          animate="float"
-          style={{ animationDelay: '0s' }}
-          viewBox="0 0 100 100"
-        >
-          <path d="M50 10 C70 20 85 40 80 60 C75 80 55 90 50 95 C45 90 25 80 20 60 C15 40 30 20 50 10 Z" fill="currentColor" />
-          <path d="M50 20 L50 90" stroke="currentColor" strokeWidth="2" fill="none" />
-          <path d="M50 40 L30 30" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          <path d="M50 55 L70 45" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          <path d="M50 70 L35 65" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        </motion.svg>
-
-        <motion.svg 
-          className="absolute top-1/2 right-40 w-32 h-32 text-green-700/25"
-          variants={leafVariants}
-          animate="float"
-          style={{ animationDelay: '1s' }}
-          viewBox="0 0 100 100"
-        >
-          <path d="M50 10 C70 20 85 40 80 60 C75 80 55 90 50 95 C45 90 25 80 20 60 C15 40 30 20 50 10 Z" fill="currentColor" />
-          <path d="M50 20 L50 90" stroke="currentColor" strokeWidth="2" fill="none" />
-          <path d="M50 40 L30 30" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          <path d="M50 55 L70 45" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          <path d="M50 70 L35 65" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        </motion.svg>
-
-        <motion.svg 
-          className="absolute bottom-20 right-20 w-28 h-28 text-green-700/35"
-          variants={leafVariants}
-          animate="float"
-          style={{ animationDelay: '2s' }}
-          viewBox="0 0 100 100"
-        >
-          <path d="M50 10 C70 20 85 40 80 60 C75 80 55 90 50 95 C45 90 25 80 20 60 C15 40 30 20 50 10 Z" fill="currentColor" />
-          <path d="M50 20 L50 90" stroke="currentColor" strokeWidth="2" fill="none" />
-          <path d="M50 40 L30 30" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          <path d="M50 55 L70 45" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          <path d="M50 70 L35 65" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        </motion.svg>
-
-        <motion.svg 
-          className="absolute top-1/3 left-10 w-20 h-20 text-green-700/20"
-          variants={leafVariants}
-          animate="float"
-          style={{ animationDelay: '1.5s' }}
-          viewBox="0 0 100 100"
-        >
-          <path d="M50 10 C70 20 85 40 80 60 C75 80 55 90 50 95 C45 90 25 80 20 60 C15 40 30 20 50 10 Z" fill="currentColor" />
-          <path d="M50 20 L50 90" stroke="currentColor" strokeWidth="2" fill="none" />
-          <path d="M50 40 L30 30" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          <path d="M50 55 L70 45" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          <path d="M50 70 L35 65" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        </motion.svg>
+    <section ref={parallaxRef} className="relative h-screen flex items-center overflow-hidden">
+      {/* Background Image with Parallax */}
+      <div className="absolute inset-0 z-0">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url("/images/heroBg.png")',
+            transform: `scale(1.05) translateY(${offset * 0.1}px)`,
+            transition: 'transform 0.05s linear'
+          }}
+        />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/70" />
       </div>
 
       {/* Content */}
@@ -89,11 +32,9 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-white leading-tight"
+              className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-2xl"
             >
-              Where Cravings <br />
-              Meet Their Perfect <br />
-              Match
+              Authentic <span className="text-amber-300">Flavors</span>, Straight From <span className="text-orange-200">The Kitchen</span>
             </motion.h1>
 
             {/* Description */}
@@ -101,9 +42,10 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-sm md:text-base text-white/80 leading-relaxed max-w-md font-light"
+              className="text-sm md:text-base text-white leading-relaxed max-w-2xl font-semibold drop-shadow-lg"
             >
-              Discover bold flavors and unforgettable dishes in a place where every craving is satisfied with the perfect bite, crafted just for you.
+              Traditional Andhra-style pickles handcrafted with farm-fresh ingredients,
+              time-honored recipes, and zero preservatives. Taste the heritage in every jar.
             </motion.p>
 
             {/* Buttons */}
@@ -113,8 +55,12 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-wrap gap-3"
             >
-              <Link to="/shop" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-amber-400 text-white font-normal rounded-none hover:bg-amber-400 hover:text-gray-900 transition-all duration-300">
-                BOOK YOUR TABLE
+              <Link to="/shop" className="inline-flex items-center gap-2 px-6 py-3 bg-amber-400 text-gray-900 font-semibold rounded-full text-sm hover:bg-amber-300 transition-all duration-300 group">
+                Explore Our Collection
+                <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link to="/about" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold rounded-full text-sm hover:bg-white/10 transition-all duration-300 drop-shadow-lg">
+                Our Story
               </Link>
             </motion.div>
 
@@ -123,32 +69,45 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex items-center gap-6 pt-4"
+              className="flex flex-wrap items-center gap-6"
             >
-              <span className="text-2xl font-serif text-white/70">4.8/5</span>
-              <div className="flex gap-1 text-amber-400">
-                {[1,2,3,4].map(i => (
-                  <span key={i}>★</span>
-                ))}
-                <span className="text-white/30">☆</span>
-              </div>
-              <span className="text-sm text-white/60 font-light">Average Rating</span>
+              {[
+                { value: '20+', label: 'Pickle Varieties' },
+                { value: '80K+', label: 'Happy Families' },
+                { value: '4.3', label: 'Rated Stars' },
+              ].map((stat, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span className="font-sans text-2xl font-extrabold text-white drop-shadow-2xl">{stat.value}</span>
+                  <span className="text-xs text-white font-semibold drop-shadow-lg">{stat.label}</span>
+                </div>
+              ))}
             </motion.div>
           </div>
 
-          {/* Right Content - Single Pickle Jar */}
-          <motion.div 
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end"
-          >
-            <img 
-              src="/images/single jar.png" 
-              alt="Pickle Jar"
-              className="w-full max-w-md lg:max-w-lg h-auto"
-            />
-          </motion.div>
+          {/* Right Content - Animated Pickle Jar (Desktop Only) */}
+          <div className="relative flex items-center justify-center hidden lg:flex">
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: 0.5,
+                type: "spring",
+                stiffness: 50
+              }}
+              className="relative"
+            >  
+              {/* Pickle Jar */}
+              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-amber-100/30 to-orange-100/30 overflow-hidden flex items-center justify-center border-4 border-white shadow-2xl">
+                <img 
+                  src="/images/single jar.png" 
+                  alt="Pickle Jar" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
