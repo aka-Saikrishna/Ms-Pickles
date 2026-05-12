@@ -7,20 +7,20 @@ export default function HeroSection() {
   const [parallaxRef, offset] = useParallax(0.6);
 
   return (
-    <section ref={parallaxRef} className="relative h-screen w-full flex items-center overflow-hidden m-0 p-0">
+    <section ref={parallaxRef} className="relative h-screen flex items-center overflow-hidden">
       {/* Background Image with Parallax */}
-      <div className="absolute inset-0 z-0 m-0 p-0">
+      <div className="absolute inset-0 z-0">
         <img 
           src="/images/heroBg.png" 
           alt="Background"
-          className="absolute inset-0 w-full h-full object-cover m-0 p-0"
+          className="absolute inset-0 w-full h-full object-cover"
           style={{
             transform: `scale(1.05) translateY(${offset * 0.1}px)`,
             transition: 'transform 0.05s linear'
           }}
         />
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/70 m-0 p-0" />
+        <div className="absolute inset-0 bg-black/70" />
       </div>
 
       {/* Content */}
@@ -60,7 +60,7 @@ export default function HeroSection() {
                 Explore Our Collection
                 <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/about" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-white font-bold rounded-full text-sm hover:bg-white/10 transition-all duration-300 drop-shadow-lg">
+              <Link to="/about" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold rounded-full text-sm hover:bg-white/10 transition-all duration-300 drop-shadow-lg">
                 Our Story
               </Link>
             </motion.div>
@@ -72,58 +72,41 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-wrap items-center gap-6"
             >
-              <div className="flex items-center gap-2">
-                <span className="text-2xl md:text-3xl font-extrabold text-white drop-shadow-2xl">20+</span>
-                <span className="text-xs md:text-sm font-semibold text-white drop-shadow-lg">Pickle Varieties</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-2xl md:text-3xl font-extrabold text-white drop-shadow-2xl">80K+</span>
-                <span className="text-xs md:text-sm font-semibold text-white drop-shadow-lg">Happy Families</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-2xl md:text-3xl font-extrabold text-white drop-shadow-2xl">4.3</span>
-                <span className="text-xs md:text-sm font-semibold text-white drop-shadow-lg">Rated Stars</span>
-              </div>
+              {[
+                { value: '20+', label: 'Pickle Varieties' },
+                { value: '80K+', label: 'Happy Families' },
+                { value: '4.3', label: 'Rated Stars' },
+              ].map((stat, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span className="font-sans text-2xl font-extrabold text-white drop-shadow-2xl">{stat.value}</span>
+                  <span className="text-xs text-white font-semibold drop-shadow-lg">{stat.label}</span>
+                </div>
+              ))}
             </motion.div>
           </div>
 
-          {/* Right Image - Only on large screens */}
-          <div className="hidden lg:flex relative items-center justify-center">
+          {/* Right Content - Animated Pickle Jar (Desktop Only) */}
+          <div className="relative flex items-center justify-center hidden lg:flex">
             <motion.div
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, type: 'spring' }}
+              transition={{ 
+                duration: 0.8, 
+                delay: 0.5,
+                type: "spring",
+                stiffness: 50
+              }}
               className="relative"
-            >
-              {/* Decorative circles */}
-              <div className="absolute -inset-8 border-2 border-amber-400/30 rounded-full animate-pulse" />
-              <div className="absolute -inset-4 border border-amber-400/20 rounded-full" />
-
-              {/* Main product image */}
-              <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
-                <img
-                  src="/images/single jar.png"
-                  alt="Pickle Jar"
+            >  
+              {/* Pickle Jar */}
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-md bg-gradient-to-br from-amber-100/30 to-orange-100/30 overflow-hidden flex items-center justify-center border-4 border-white shadow-2xl">
+                <img 
+                  src="/images/single jar.png" 
+                  alt="Pickle Jar" 
                   className="w-full h-full object-cover"
                 />
               </div>
 
-              {/* Floating badges */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -top-4 -right-4 bg-white px-4 py-2 rounded-2xl shadow-lg"
-              >
-                <span className="text-sm font-extrabold text-orange-600">No Preservatives</span>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-                className="absolute -bottom-4 -left-4 bg-white px-4 py-2 rounded-2xl shadow-lg"
-              >
-                <span className="text-sm font-extrabold text-amber-600">Farm Fresh</span>
-              </motion.div>
             </motion.div>
           </div>
         </div>
