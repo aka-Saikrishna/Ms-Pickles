@@ -10,10 +10,11 @@ export default function HeroSection() {
     <section ref={parallaxRef} className="relative h-screen flex items-center overflow-hidden">
       {/* Background Image with Parallax */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
+        <img 
+          src="/images/heroBg.png" 
+          alt="Background"
+          className="absolute inset-0 w-full h-full object-cover"
           style={{
-            backgroundImage: 'url("/images/heroBg.png")',
             transform: `scale(1.05) translateY(${offset * 0.1}px)`,
             transition: 'transform 0.05s linear'
           }}
