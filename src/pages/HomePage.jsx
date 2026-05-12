@@ -19,7 +19,7 @@ export default function HomePage() {
       <RecipeIdeas />
       <Testimonials />
       <JourneyTimeline />
-      <MeetFounder />
+      {/* <MeetFounder /> */}
       <InstagramGrid />
       <TrustBadges />
     </div>
