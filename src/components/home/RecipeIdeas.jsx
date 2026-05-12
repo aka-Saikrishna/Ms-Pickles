@@ -1,75 +1,135 @@
 import { useScrollReveal, useParallax } from '../../hooks/useScrollReveal';
+import { motion } from 'framer-motion';
 
 export default function RecipeIdeas() {
   const [ref, visible] = useScrollReveal(0.1);
   const [pRef, offset] = useParallax(0.5);
 
   const recipes = [
-    { title: 'Perfect with Hot Rice', desc: 'Mix a spoonful of pickle with steaming hot rice and a dash of ghee. The heat releases the rich aroma of spices, creating the ultimate comfort meal — a staple in every Andhra household.', accent: 'gold' },
-    { title: 'Side with Dosa & Idli', desc: 'Pair our tangy pickles as a side with crispy dosas or soft idlis. The burst of spice elevates your breakfast, adding that authentic Andhra kick to your morning routine.', accent: 'terracotta' },
-    { title: 'Spread on Roti & Paratha', desc: 'Spread a thin layer of our gongura or mango pickle on warm roti or paratha for a flavour-packed meal. The tangy, spicy taste turns a simple flatbread into something extraordinary.', accent: 'spice' },
-    { title: 'Flavour Boost for Curries', desc: 'Add a spoonful of our pickle to dals, gravies, or stir-fries for an instant depth of flavour. It works as a secret ingredient that transforms everyday cooking into something special.', accent: 'gold' },
+    { 
+      title: 'Perfect with Hot Rice', 
+      desc: 'Mix a spoonful of pickle with steaming hot rice and a dash of ghee. The heat releases the rich aroma of spices.',
+      icon: '🍚',
+      color: 'from-amber-500 to-orange-500'
+    },
+    { 
+      title: 'Side with Dosa & Idli', 
+      desc: 'Pair our tangy pickles as a side with crispy dosas or soft idlis. The burst of spice elevates your breakfast.',
+      icon: '🥞',
+      color: 'from-orange-500 to-red-500'
+    },
+    { 
+      title: 'Spread on Roti & Paratha', 
+      desc: 'Spread a thin layer of our gongura or mango pickle on warm roti or paratha for a flavour-packed meal.',
+      icon: '🫓',
+      color: 'from-red-500 to-rose-500'
+    },
+    { 
+      title: 'Flavour Boost for Curries', 
+      desc: 'Add a spoonful of our pickle to dals, gravies, or stir-fries for an instant depth of flavour.',
+      icon: '🍲',
+      color: 'from-rose-500 to-pink-500'
+    },
   ];
 
   return (
-    <section className="py-24 bg-surface-container relative overflow-hidden" ref={ref}>
+    <section className="py-24 bg-gradient-to-br from-surface to-surface-container relative overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Images Grid */}
-          <div className="relative h-[400px] md:h-[500px]" ref={pRef}>
-            <div
-              className={`absolute top-0 left-0 w-[60%] h-[65%] rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
-              style={{ transform: `translateY(${offset * 0.4}px)` }}
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            animate={visible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="label-gold"
+          >
+            Serving Suggestions
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={visible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-sans text-4xl md:text-6xl font-extrabold text-on-surface mt-4"
+          >
+            One Pickle, <span className="text-gold-dark">Endless Possibilities</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={visible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-on-surface-variant text-lg mt-4 max-w-2xl mx-auto"
+          >
+            Our pickles aren't just sides — they're versatile culinary companions
+          </motion.p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          {/* Image Side */}
+          <div className="relative" ref={pRef}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={visible ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8 }}
+              className="relative"
             >
-              <img 
-                src="/images/chicken.jpeg" 
-                alt="Chicken Pickle"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div
-              className={`absolute bottom-0 right-0 w-[60%] h-[65%] rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
-              style={{ transform: `translateY(${-offset * 0.6}px)` }}
-            >
-              <img 
-                src="/images/recip.png" 
-                alt="Pickle Recipe"
-                className="w-full h-full object-cover"
-              />
-            </div>
+              {/* Main Image */}
+              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/images/heroBg.png" 
+                  alt="Pickle Serving Ideas"
+                  className="w-full h-[400px] md:h-[500px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              </div>
+
+              {/* Floating Cards */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-6 -right-6 z-20 bg-white rounded-2xl p-4 shadow-xl"
+              >
+                <div className="text-4xl">🌶️</div>
+              </motion.div>
+              
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute -bottom-6 -left-6 z-20 bg-white rounded-2xl p-4 shadow-xl"
+              >
+                <div className="text-4xl">🥭</div>
+              </motion.div>
+            </motion.div>
           </div>
 
-          {/* Content */}
-          <div className={`space-y-10 transition-all duration-1000 delay-500 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
-            <div className="space-y-4">
-              <span className="label-gold">Serving Suggestions</span>
-              <h2 className="font-sans text-4xl md:text-5xl font-extrabold text-on-surface">
-                One Pickle, <br />
-                <span className="text-gold-dark">Multiple Ways</span>
-              </h2>
-              <p className="text-on-surface-variant text-lg">
-                Our pickles aren't just sides; they are versatile culinary companions that transform every meal into a gourmet experience.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {recipes.map((recipe, i) => (
-                <div key={i} className="flex gap-6 items-start group">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
-                    <span className="font-sans text-xl font-extrabold text-gold-dark">{i + 1}</span>
-                  </div>
-                  <div className="space-y-1">
-                    <h3 className="font-sans text-xl font-extrabold text-on-surface group-hover:text-gold-dark transition-colors">{recipe.title}</h3>
-                    <p className="text-on-surface-variant text-sm leading-relaxed">{recipe.desc}</p>
+          {/* Recipe Cards */}
+          <div className="space-y-4">
+            {recipes.map((recipe, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 20 }}
+                animate={visible ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
+                whileHover={{ x: -8, scale: 1.02 }}
+                className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+              >
+                <div className={`absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b ${recipe.color}`} />
+                <div className="pl-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                      {recipe.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-sans text-xl font-extrabold text-on-surface group-hover:text-gold-dark transition-colors">
+                        {recipe.title}
+                      </h3>
+                      <p className="text-on-surface-variant text-sm leading-relaxed mt-1">
+                        {recipe.desc}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <button className="btn btn-secondary btn-lg group">
-              View More Recipes
-              <div className="w-8 h-[1px] bg-gold ml-2 transition-all group-hover:w-12" />
-            </button>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
