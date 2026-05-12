@@ -7,7 +7,7 @@ export default function HeroSection() {
   const [parallaxRef, offset] = useParallax(0.3);
 
   return (
-    <section ref={parallaxRef} className="relative min-h-screen flex items-center overflow-hidden">
+    <section ref={parallaxRef} className="relative h-screen flex items-center overflow-hidden">
       {/* Background Image with Parallax */}
       <div className="absolute inset-0 z-0">
         <div 
@@ -23,8 +23,8 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full px-6 md:px-12 lg:px-24 pt-32 pb-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 w-full px-6 md:px-12 lg:px-24 pt-20 pb-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center h-full">
           {/* Left Content */}
           <div className="space-y-8">
             {/* Heading */}
