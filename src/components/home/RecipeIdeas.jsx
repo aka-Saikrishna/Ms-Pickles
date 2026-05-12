@@ -14,11 +14,11 @@ export default function RecipeIdeas() {
   return (
     <section className="py-24 bg-surface-container relative overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Images Grid */}
-          <div className="relative h-[450px] md:h-[550px]" ref={pRef}>
+          <div className="relative h-[400px] md:h-[500px]" ref={pRef}>
             <div
-              className={`absolute top-0 left-0 w-3/5 h-3/5 rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
+              className={`absolute top-0 left-0 w-1/2 h-1/2 rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
               style={{ transform: `translateY(${offset * 0.4}px)` }}
             >
               <img 
@@ -28,7 +28,7 @@ export default function RecipeIdeas() {
               />
             </div>
             <div
-              className={`absolute bottom-0 right-0 w-3/5 h-3/5 rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
+              className={`absolute bottom-0 right-0 w-1/2 h-1/2 rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 delay-300 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
               style={{ transform: `translateY(${-offset * 0.6}px)` }}
             >
               <img 
@@ -40,7 +40,7 @@ export default function RecipeIdeas() {
           </div>
 
           {/* Content */}
-          <div className={`space-y-12 transition-all duration-1000 delay-500 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
+          <div className={`space-y-10 transition-all duration-1000 delay-500 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
             <div className="space-y-4">
               <span className="label-gold">Serving Suggestions</span>
               <h2 className="font-sans text-4xl md:text-5xl font-extrabold text-on-surface">
@@ -52,7 +52,7 @@ export default function RecipeIdeas() {
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {recipes.map((recipe, i) => (
                 <div key={i} className="flex gap-6 items-start group">
                   <div className="w-12 h-12 shrink-0 rounded-full bg-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
