@@ -7,9 +7,9 @@ export default function HeroSection() {
   const [parallaxRef, offset] = useParallax(0.6);
 
   return (
-    <section ref={parallaxRef} className="relative h-screen flex items-center overflow-hidden">
+    <section ref={parallaxRef} className="relative h-screen flex items-center overflow-hidden bg-[#0f172a]">
       {/* Background Image with Parallax */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 opacity-30">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -18,114 +18,120 @@ export default function HeroSection() {
             transition: 'transform 0.05s linear'
           }}
         />
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/70" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full px-4 md:px-8 pt-24 pb-12 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center h-full">
+      <div className="relative z-10 w-full px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             {/* Heading */}
             <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-2xl"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold text-white leading-tight"
             >
-              Authentic <span className="text-amber-300">Flavors</span>, Straight From <span className="text-orange-200">The Kitchen</span>
+              Where Cravings
+              <br />
+              Meet Their Perfect
+              <br />
+              <span className="text-amber-300">Match</span>
             </motion.h1>
 
             {/* Description */}
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-sm md:text-base text-white leading-relaxed max-w-2xl font-semibold drop-shadow-lg"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-gray-300 leading-relaxed max-w-md"
             >
               Traditional Andhra-style pickles handcrafted with farm-fresh ingredients,
               time-honored recipes, and zero preservatives. Taste the heritage in every jar.
             </motion.p>
 
-            {/* Buttons */}
+            {/* Button */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-wrap gap-3"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             >
-              <Link to="/shop" className="inline-flex items-center gap-2 px-6 py-3 bg-amber-400 text-gray-900 font-semibold rounded-full text-sm hover:bg-amber-300 transition-all duration-300 group">
+              <Link to="/shop" className="inline-flex items-center gap-3 px-6 py-3 border-2 border-amber-300 text-amber-300 font-serif rounded-sm hover:bg-amber-300 hover:text-gray-900 transition-all duration-300">
                 Explore Our Collection
-                <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/about" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold rounded-full text-sm hover:bg-white/10 transition-all duration-300 drop-shadow-lg">
-                Our Story
+                <ChevronRight size={18} />
               </Link>
             </motion.div>
 
-            {/* Trust indicators */}
+            {/* Rating */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-6"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="flex items-center gap-3 text-gray-400"
             >
-              {[
-                { value: '20+', label: 'Pickle Varieties' },
-                { value: '80K+', label: 'Happy Families' },
-                { value: '4.3', label: 'Rated Stars' },
-              ].map((stat, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <span className="font-sans text-2xl font-extrabold text-white drop-shadow-2xl">{stat.value}</span>
-                  <span className="text-xs text-white font-semibold drop-shadow-lg">{stat.label}</span>
-                </div>
-              ))}
+              <span className="text-2xl font-serif">4.8/5</span>
+              <div className="flex gap-1 text-amber-300">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+              </div>
+              <span className="font-sans text-sm">Average Rating</span>
             </motion.div>
           </div>
 
-          {/* Right Content - Animated Pickle Jar (Desktop Only) */}
-          <div className="relative flex items-center justify-center hidden lg:flex">
+          {/* Right Side - Pickle Jar & Floating Leaves */}
+          <div className="relative">
+            {/* Floating Leaves */}
+            {[
+              { top: '10%', right: '5%', delay: 0, rotate: -15 },
+              { top: '30%', right: '15%', delay: 0.2, rotate: 20 },
+              { top: '70%', right: '10%', delay: 0.4, rotate: -10 },
+              { top: '80%', right: '25%', delay: 0.6, rotate: 15 }
+            ].map((leaf, i) => (
+              <motion.img
+                key={i}
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'%3E%3Cellipse cx='50' cy='30' rx='40' ry='20' fill='%234ade80' opacity='0.8'/%3E%3Cpath d='M50 30 L50 5' stroke='%2316a34a' stroke-width='2' fill='none'/%3E%3C/svg%3E"
+                alt="Floating Leaf"
+                className="absolute w-20 h-12 object-contain"
+                style={{ top: leaf.top, right: leaf.right, transform: `rotate(${leaf.rotate}deg)` }}
+                initial={{ opacity: 0, x: 100, y: 50 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: 0, 
+                  y: [0, -20, 0], 
+                  rotate: [leaf.rotate, leaf.rotate + 5, leaf.rotate]
+                }}
+                transition={{ 
+                  duration: 1, 
+                  delay: leaf.delay,
+                  y: { 
+                    duration: 4, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  },
+                  rotate: { 
+                    duration: 3, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }
+                }}
+              />
+            ))}
+
+            {/* Pickle Jar */}
             <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ 
-                duration: 0.8, 
-                delay: 0.5,
-                type: "spring",
-                stiffness: 50
-              }}
+              initial={{ opacity: 0, x: 100, scale: 0.8 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
               className="relative"
             >
               {/* Decorative rings */}
-              <div className="absolute -inset-8 rounded-full border-2 border-amber-400/30 animate-pulse" />
-              <div className="absolute -inset-4 rounded-full border border-amber-400/20" />
+              <div className="absolute -top-4 -left-4 w-full h-full border-2 border-amber-300/30 rounded-full scale-110" />
+              <div className="absolute -top-8 -left-8 w-full h-full border border-amber-300/20 rounded-full scale-125" />
               
-              {/* Pickle Jar */}
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-amber-100/30 to-orange-100/30 overflow-hidden flex items-center justify-center border-4 border-white shadow-2xl">
-                <img 
-                  src="/images/single jar.png" 
-                  alt="Pickle Jar" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Floating badges */}
-              <motion.div 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 right-4 px-4 py-2 bg-white/90 backdrop-blur-md rounded-xl shadow-lg border border-amber-400/20"
-              >
-                <span className="text-xs font-bold text-orange-600">No Preservatives</span>
-              </motion.div>
-              
-              <motion.div 
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -bottom-4 left-4 px-4 py-2 bg-white/90 backdrop-blur-md rounded-xl shadow-lg border border-amber-400/20"
-              >
-                <span className="text-xs font-bold text-amber-600">Farm Fresh</span>
-              </motion.div>
+              <img 
+                src="/images/single jar.png" 
+                alt="Premium Pickle Jar"
+                className="w-full max-w-md mx-auto drop-shadow-2xl"
+              />
             </motion.div>
           </div>
         </div>
