@@ -44,10 +44,10 @@ export default function Header() {
           <Link to="/" className="flex items-center gap-3 shrink-0">
             <img src="/logo-light.png" alt="MS Homemade Pickles" className="w-12 h-12 rounded-full object-cover" />
             <div className="flex flex-col">
-              <span className={`font-serif text-lg font-bold tracking-tight ${scrolled || !isHomePage ? 'text-gray-900' : 'text-white'}`}>
+              <span className={`font-sans text-lg font-bold tracking-tight ${scrolled || !isHomePage ? 'text-gray-900' : 'text-white drop-shadow-md'}`}>
                 MS Pickles
               </span>
-              <span className={`text-[11px] font-medium tracking-widest uppercase ${scrolled || !isHomePage ? 'text-amber-600' : 'text-amber-300'}`}>
+              <span className={`text-[11px] font-semibold tracking-widest uppercase ${scrolled || !isHomePage ? 'text-amber-600' : 'text-amber-200 drop-shadow'}`}>
                 Homemade Heritage
               </span>
             </div>
@@ -59,10 +59,10 @@ export default function Header() {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`relative text-sm font-medium py-1.5 transition-colors duration-150 group
+                className={`relative text-sm font-semibold py-1.5 transition-colors duration-150 group
                   ${scrolled || !isHomePage 
                     ? location.pathname === link.to ? 'text-amber-600' : 'text-gray-600 hover:text-amber-600' 
-                    : location.pathname === link.to ? 'text-amber-300' : 'text-white hover:text-amber-300'
+                    : location.pathname === link.to ? 'text-amber-200 drop-shadow' : 'text-white drop-shadow-md hover:text-amber-200'
                   }`}
               >
                 {link.label}
