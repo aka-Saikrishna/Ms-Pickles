@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen overflow-x-hidden">
+    <section className="relative w-screen h-screen overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{
             backgroundImage: 'url("/images/heroBg.png")'
           }}
@@ -19,8 +19,8 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 w-full h-full flex items-center justify-center">
-        <div className="w-full px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="w-full px-4 sm:px-6 md:px-8 max-w-7xl mx-auto overflow-hidden">
+          <div className="grid gap-8 items-center lg:grid-cols-2">
             {/* Left Content */}
             <div className="space-y-5">
               {/* Heading */}
@@ -80,8 +80,8 @@ export default function HeroSection() {
               </motion.div>
             </div>
 
-            {/* Right Content - Animated Pickle Jar (Desktop Only) */}
-            <div className="relative flex items-center justify-center hidden lg:flex">
+            {/* Right Content - Animated Pickle Jar */}
+            <div className="relative flex items-center justify-center">
               <motion.div
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -94,7 +94,7 @@ export default function HeroSection() {
                 className="relative"
               >  
                 {/* Pickle Jar */}
-                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden flex items-center justify-center border-4 border-white/30 shadow-2xl">
+                <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden flex items-center justify-center border-4 border-white/30 shadow-2xl">
                   <img 
                     src="/images/single jar.png" 
                     alt="Pickle Jar" 
