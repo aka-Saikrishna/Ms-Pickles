@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
-    <section className="relative w-screen h-screen overflow-hidden">
+    <section className="relative h-screen overflow-x-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: 'url("/images/heroBg.png")'
           }}
@@ -80,8 +80,8 @@ export default function HeroSection() {
               </motion.div>
             </div>
 
-            {/* Right Content - Animated Pickle Jar */}
-            <div className="relative flex items-center justify-center">
+            {/* Right Content - Animated Pickle Jar (Desktop Only) */}
+            <div className="relative flex items-center justify-center hidden lg:flex">
               <motion.div
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -94,7 +94,7 @@ export default function HeroSection() {
                 className="relative"
               >  
                 {/* Pickle Jar */}
-                <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden flex items-center justify-center border-4 border-white/30 shadow-2xl">
+                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden flex items-center justify-center border-4 border-white/30 shadow-2xl">
                   <img 
                     src="/images/single jar.png" 
                     alt="Pickle Jar" 
