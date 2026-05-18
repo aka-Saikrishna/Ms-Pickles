@@ -1,14 +1,16 @@
 import { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Filter, ChevronDown, ShoppingBag, Star, LayoutGrid, List } from 'lucide-react';
+import { Filter, ChevronDown, ShoppingBag, Star, LayoutGrid, List, Heart } from 'lucide-react';
 import { products, categories } from '../data/products';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function ShopPage() {
   const { category: categoryId } = useParams();
   const [ref, visible] = useScrollReveal(0.1);
   const { addItem } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   const [sortBy, setSortBy] = useState('popular');
   const [priceRange, setPriceRange] = useState([0, 2000]);

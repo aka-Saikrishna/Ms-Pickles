@@ -1,17 +1,13 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import { getBestsellers } from '../../data/products';
 import { useCart } from '../../context/CartContext';
+import { useWishlist } from '../../context/WishlistContext';
 
 export default function BestsellersCarousel() {
   const bestsellers = getBestsellers();
   const { addItem } = useCart();
-  const [wishlist, setWishlist] = useState({});
-
-  const toggleWishlist = (id) => {
-    setWishlist(prev => ({ ...prev, [id]: !prev[id] }));
-  };
+  const { wishlist, addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   return (
     <section className="py-16 overflow-hidden bg-white">
@@ -36,12 +32,15 @@ export default function BestsellersCarousel() {
                 </div>
                 {/* Wishlist Icon */}
                 <button 
-                  onClick={(e) => { e.preventDefault(); toggleWishlist(product.id); }}
+                  onClick={(e) => { 
+                    e.preventDefault(); 
+                    isInWishlist(product.id) ? removeFromWishlist(product.id) : addToWishlist(product);
+                  }}
                   className="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md"
                 >
                   <Heart 
                     size={18} 
-                    className={wishlist[product.id] ? 'fill-red-500 text-red-500' : 'text-gray-600'} 
+                    className={isInWishlist(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-600'} 
                   />
                 </button>
               </Link>
