@@ -1,4 +1,5 @@
 import HeroSection from '../components/home/HeroSection';
+import CategoriesSection from '../components/home/CategoriesSection';
 import WhyChooseUs from '../components/home/WhyChooseUs';
 import FeaturedCollections from '../components/home/FeaturedCollections';
 import BestsellersCarousel from '../components/home/BestsellersCarousel';
@@ -13,15 +14,17 @@ export default function HomePage() {
   return (
     <div className="overflow-x-hidden">
       <HeroSection />
-      <WhyChooseUs />
+      <CategoriesSection />
       <FeaturedCollections />
       <BestsellersCarousel />
-      <RecipeIdeas />
+      {/* <RecipeIdeas /> */}
+      <WhyChooseUs />
       <Testimonials />
       <JourneyTimeline />
       {/* <MeetFounder /> */}
       <InstagramGrid />
       <TrustBadges />
+      <div className="h-20 md:hidden" />
     </div>
   );
 }

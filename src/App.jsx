@@ -4,6 +4,7 @@ import Lenis from 'lenis';
 import { CartProvider } from './context/CartContext';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import BottomNav from './components/layout/BottomNav';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import ProductPage from './pages/ProductPage';
@@ -62,6 +63,7 @@ function AppContent() {
         </Routes>
       </main>
       <Footer />
+      <BottomNav />
     </>
   );
 }
