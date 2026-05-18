@@ -60,6 +60,7 @@ export default function ProductPage() {
                 src={product.image} 
                 alt={product.name} 
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                style={{ height: '100%', width: '100%', objectFit: 'cover' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent pointer-events-none" />
 
@@ -76,8 +77,13 @@ export default function ProductPage() {
             {/* Thumbnail Gallery */}
             <div className="grid grid-cols-4 gap-4">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className={`aspect-square rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${i === 1 ? 'border-gold shadow-md' : 'border-transparent opacity-60 hover:opacity-100'}`}>
-                  <img src={product.image} alt="thumbnail" className="w-full h-full object-cover" />
+                <div key={i} className={`aspect-square rounded-xl overflow-hidden border-2 transition-all cursor-pointer relative ${i === 1 ? 'border-gold shadow-md' : 'border-transparent opacity-60 hover:opacity-100'}`}>
+                  <img 
+                    src={product.image} 
+                    alt="thumbnail" 
+                    className="absolute inset-0 w-full h-full object-cover" 
+                    style={{ height: '100%', width: '100%', objectFit: 'cover' }}
+                  />
                 </div>
               ))}
             </div>
@@ -232,8 +238,14 @@ export default function ProductPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {relatedProducts.map(p => (
                 <Link key={p.id} to={`/product/${p.id}`} className="glass-card group p-4 block">
-                  <div className="aspect-square rounded-xl overflow-hidden mb-4 relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gold-light/10 to-spice-light/5 group-hover:scale-105 transition-transform duration-500" />
+                  <div className="aspect-square rounded-xl overflow-hidden mb-4 relative bg-surface-container">
+                    <img 
+                      src={p.image} 
+                      alt={p.name} 
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      style={{ height: '100%', width: '100%', objectFit: 'cover' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-gold-light/10 to-spice-light/5 pointer-events-none" />
                   </div>
                   <h3 className="font-serif text-base font-bold text-on-surface group-hover:text-gold-dark transition-colors">{p.name}</h3>
                   <p className="text-xs text-on-surface-variant mt-1">Rs. {Object.values(p.prices)[0]}</p>

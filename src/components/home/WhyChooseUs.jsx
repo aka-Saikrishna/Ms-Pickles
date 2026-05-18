@@ -1,13 +1,13 @@
-import { Leaf, ShieldCheck, ChefHat, BadgeCheck, Sprout, Heart } from 'lucide-react';
+import { ShieldCheck, ChefHat, BadgeCheck, Heart, Globe, Package } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const features = [
-  { icon: Leaf, title: '100% Natural', desc: 'Where traditional Andhra recipes meet farm-fresh ingredients — our handcrafted pickles deliver authentic homestyle taste with zero preservatives.' },
-  { icon: ShieldCheck, title: 'No Preservatives', desc: 'No artificial preservatives, no chemicals, no shortcuts. Our pickles are made in small batches with natural preservation methods — just pure spices, oil, and love in every jar.' },
-  { icon: ChefHat, title: 'Traditional Recipes', desc: 'Our pickles are crafted using age-old Andhra recipes passed down through generations. Every jar preserves the authentic taste of homemade pickles — made the way grandmothers have done it for centuries.' },
-  { icon: BadgeCheck, title: 'FSSAI Certified', desc: 'Certified food safety standards ensuring the highest quality and hygiene.' },
-  { icon: Sprout, title: 'Farm Fresh Ingredients', desc: 'We source only the freshest vegetables, raw mangoes, and premium spices directly from farms. Cold-pressed oils and handpicked ingredients ensure every jar bursts with natural flavour.' },
-  { icon: Heart, title: 'Handcrafted with Love', desc: 'Every jar is made by hand with care, attention, and passion for authentic taste.' },
+  { icon: ShieldCheck, title: 'Strict Hygiene & Safety', desc: 'Our state-of-the-art kitchen conforms to FSSAI guidelines, utilizing surgical-grade sanitation practices so every jar is 100% safe, clean, and pristine.' },
+  { icon: ChefHat, title: '100% Homemade Spices', desc: 'No store-bought spice packets or artificial colors. We dry-roast, blend, and stone-grind our secret spice mixes in-house for that unmatched authentic Andhra aroma.' },
+  { icon: Globe, title: 'International Shipping', desc: 'Bringing the taste of home to your doorstep worldwide! We proudly offer reliable international delivery to the USA, UK, Canada, Australia, Gulf, and beyond.' },
+  { icon: Package, title: 'High-Standard Packing', desc: 'Packed using food-grade export containers with heavy-duty sealants and triple-layered bubble wrap, guaranteeing complete leak-proof security during long voyages.' },
+  { icon: BadgeCheck, title: 'No Artificial Preservatives', desc: 'We preserve our pickles the traditional way — using strictly high-quality cold-pressed oils, natural salt, and souring agents. Absolutely zero chemicals used.' },
+  { icon: Heart, title: 'Handcrafted in Small Batches', desc: 'Prepared in limited household batches under strict family supervision to preserve the heritage quality and home-cooked soul in every single spoonful.' },
 ];
 
 export default function WhyChooseUs() {

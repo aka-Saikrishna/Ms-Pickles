@@ -1,10 +1,10 @@
-import { Truck, ShieldCheck, CreditCard, Award } from 'lucide-react';
+import { ShieldCheck, ChefHat, Globe, Package } from 'lucide-react';
 
 const badges = [
-  { icon: Award, title: 'Outstanding Quality', desc: 'Premium ingredients only.' },
-  { icon: Truck, title: 'Free Shipping', desc: 'On orders above Rs.1499.' },
-  { icon: ShieldCheck, title: 'Free Returns', desc: 'Quality issues resolved in 48hrs.' },
-  { icon: CreditCard, title: 'Secure Payments', desc: '100% encrypted transactions.' },
+  { icon: ShieldCheck, title: '100% Pure & Hygienic', desc: 'Prepared under strict sanitary guidelines.' },
+  { icon: ChefHat, title: 'Homemade Spices', desc: 'Natural, hand-ground authentic spice blends.' },
+  { icon: Globe, title: 'International Delivery', desc: 'Global shipping straight to your doorstep.' },
+  { icon: Package, title: 'High Standard Packing', desc: 'Leak-proof food-grade export packing.' },
 ];
 
 export default function TrustBadges() {

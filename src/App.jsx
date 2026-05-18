@@ -6,6 +6,7 @@ import { WishlistProvider } from './context/WishlistContext';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import BottomNav from './components/layout/BottomNav';
+import WhatsAppWidget from './components/layout/WhatsAppWidget';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import ProductPage from './pages/ProductPage';
@@ -67,6 +68,7 @@ function AppContent() {
       </main>
       <Footer />
       <BottomNav />
+      <WhatsAppWidget />
     </>
   );
 }

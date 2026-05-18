@@ -27,7 +27,8 @@ export default function BestsellersCarousel() {
                   <img 
                     src={product.image} 
                     alt={product.name}
-                    className="w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ height: '100%', width: '100%', objectFit: 'cover' }}
                   />
                 </div>
                 {/* Wishlist Icon */}

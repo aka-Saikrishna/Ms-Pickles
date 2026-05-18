@@ -46,15 +46,17 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-3">
             <a href="https://instagram.com/ms_homemade_pickles" target="_blank" rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:border-gold hover:text-gold-dark hover:bg-gold-light/20 transition-all duration-200" aria-label="Instagram">
-              <IconInstagram size={18} />
+              className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:border-gold hover:text-gold-dark hover:bg-gold-light/20 transition-all duration-300 hover:scale-110 shadow-sm" aria-label="Instagram">
+              <IconInstagram size={24} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:border-gold hover:text-gold-dark hover:bg-gold-light/20 transition-all duration-200" aria-label="Facebook">
-              <IconFacebook size={18} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:border-gold hover:text-gold-dark hover:bg-gold-light/20 transition-all duration-200" aria-label="YouTube">
-              <IconYoutube size={18} />
-            </a>
+          </div>
+
+          <div className="p-5 rounded-xl bg-surface-lowest border border-outline-variant/50 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+            <img src="/images/google-qr.jpg" alt="Check us out on Google" className="w-32 h-32 rounded-lg object-contain bg-white p-1.5 border border-outline-variant/30 shrink-0" />
+            <div className="space-y-1">
+              <p className="text-sm font-bold text-on-surface">Check us out on Google</p>
+              <p className="text-xs text-on-surface-variant leading-relaxed">Scan to view our business listing & customer reviews!</p>
+            </div>
           </div>
         </div>
 

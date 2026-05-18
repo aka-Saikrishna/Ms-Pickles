@@ -179,6 +179,13 @@ export default function CheckoutPage() {
               </div>
               <p className="text-xs text-on-surface-variant mt-4">A confirmation message has been sent to your phone.</p>
             </div>
+            <div className="glass-card p-6 border border-gold/20 flex flex-col md:flex-row items-center gap-6 text-left max-w-xl mx-auto">
+              <img src="/images/google-qr.jpg" alt="Check us out on Google" className="w-24 h-24 rounded-xl object-contain bg-white p-1.5 border border-outline-variant/30 shrink-0" />
+              <div className="space-y-2">
+                <h4 className="font-serif text-lg font-bold text-on-surface">Loved shopping with us?</h4>
+                <p className="text-sm text-on-surface-variant leading-relaxed">Check us out on Google! Scan the QR code to read customer reviews, or leave us a review to share your feedback about our home-style recipe and fresh taste!</p>
+              </div>
+            </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/" className="btn btn-primary btn-lg w-full sm:w-auto px-12">Return Home</Link>
               <Link to="/shop" className="btn btn-secondary btn-lg w-full sm:w-auto px-12">Shop More</Link>
