@@ -1,7 +1,6 @@
 import HeroSection from '../components/home/HeroSection';
 import CategoriesSection from '../components/home/CategoriesSection';
 import WhyChooseUs from '../components/home/WhyChooseUs';
-import FeaturedCollections from '../components/home/FeaturedCollections';
 import BestsellersCarousel from '../components/home/BestsellersCarousel';
 import RecipeIdeas from '../components/home/RecipeIdeas';
 import Testimonials from '../components/home/Testimonials';
@@ -15,7 +14,6 @@ export default function HomePage() {
     <div className="overflow-x-hidden">
       <HeroSection />
       <CategoriesSection />
-      <FeaturedCollections />
       <BestsellersCarousel />
       {/* <RecipeIdeas /> */}
       <WhyChooseUs />
