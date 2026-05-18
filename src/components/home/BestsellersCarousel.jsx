@@ -1,28 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, ShoppingBag, Heart } from 'lucide-react';
-import gsap from 'gsap';
+import { Heart } from 'lucide-react';
 import { getBestsellers } from '../../data/products';
 import { useCart } from '../../context/CartContext';
 
 export default function BestsellersCarousel() {
-  const scrollRef = useRef(null);
   const bestsellers = getBestsellers();
   const { addItem } = useCart();
   const [wishlist, setWishlist] = useState({});
 
   const toggleWishlist = (id) => {
     setWishlist(prev => ({ ...prev, [id]: !prev[id] }));
-  };
-
-  const scroll = (direction) => {
-    if (!scrollRef.current) return;
-    const scrollAmount = direction === 'left' ? -400 : 400;
-    gsap.to(scrollRef.current, {
-      scrollLeft: scrollRef.current.scrollLeft + scrollAmount,
-      duration: 0.6,
-      ease: 'power2.out'
-    });
   };
 
   return (
@@ -34,23 +22,16 @@ export default function BestsellersCarousel() {
           </h2>
         </div>
 
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto no-scrollbar pb-8 snap-x"
-          style={{ scrollBehavior: 'auto' }}
-        >
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {bestsellers.map((product) => (
-            <div
-              key={product.id}
-              className="min-w-[200px] md:min-w-[220px] snap-start bg-white"
-            >
+            <div key={product.id} className="bg-white">
               {/* Product Image */}
               <Link to={`/product/${product.id}`} className="block relative mb-4">
-                <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-gray-200">
+                <div className="relative w-full aspect-square overflow-hidden border-4 border-gray-200">
                   <img 
                     src={product.image} 
                     alt={product.name}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 {/* Wishlist Icon */}
@@ -112,11 +93,6 @@ export default function BestsellersCarousel() {
           ))}
         </div>
       </div>
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}} />
     </section>
   );
 }
