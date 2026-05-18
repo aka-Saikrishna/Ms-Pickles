@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingBag, Phone } from 'lucide-react';
+import { Menu, X, ShoppingBag, Heart } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { useWishlist } from '../../context/WishlistContext';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { totalItems } = useCart();
+  const { totalItems: cartItems } = useCart();
+  const { totalItems: wishlistItems } = useWishlist();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -74,15 +76,27 @@ export default function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
+            <Link to="/wishlist" className={`relative flex items-center justify-center w-11 h-11 rounded-full transition-colors
+              ${scrolled || !isHomePage 
+                ? 'text-gray-700 hover:bg-gray-100' 
+                : 'text-white hover:bg-white/10'
+              }`} aria-label="Wishlist">
+              <Heart size={22} strokeWidth={1.8} />
+              {wishlistItems > 0 && (
+                <span className="absolute top-1 right-1 min-w-[18px] h-[18px] rounded-full bg-red-500 text-white text-[11px] font-bold flex items-center justify-center">
+                  {wishlistItems}
+                </span>
+              )}
+            </Link>
             <Link to="/cart" className={`relative flex items-center justify-center w-11 h-11 rounded-full transition-colors
               ${scrolled || !isHomePage 
                 ? 'text-gray-700 hover:bg-gray-100' 
                 : 'text-white hover:bg-white/10'
               }`} aria-label="Shopping cart">
               <ShoppingBag size={22} strokeWidth={1.8} />
-              {totalItems > 0 && (
+              {cartItems > 0 && (
                 <span className="absolute top-1 right-1 min-w-[18px] h-[18px] rounded-full bg-amber-400 text-gray-900 text-[11px] font-bold flex items-center justify-center animate-scale-in">
-                  {totalItems}
+                  {cartItems}
                 </span>
               )}
             </Link>
