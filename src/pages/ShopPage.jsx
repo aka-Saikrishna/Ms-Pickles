@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Filter, ChevronDown, ShoppingBag, Star, LayoutGrid, List, Heart } from 'lucide-react';
+import { Filter, ChevronDown, ShoppingBag, Star, LayoutGrid, List, Heart, Search } from 'lucide-react';
 import { products, categories } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
@@ -56,29 +56,34 @@ export default function ShopPage() {
           </div>
 
           <div className="flex items-center gap-4 border-t md:border-t-0 pt-6 md:pt-0">
-            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-outline-variant text-sm font-medium">
-              <span className="text-on-surface-variant">Sort by:</span>
+            <div className="flex items-center gap-3 px-5 py-3 bg-white rounded-xl border-2 border-outline-variant text-sm font-medium hover:border-gold/40 transition-all relative">
+              <label className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Sort by:</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="bg-transparent border-none outline-none text-on-surface cursor-pointer"
+                className="bg-transparent border-none outline-none text-on-surface font-bold cursor-pointer text-sm appearance-none pr-6"
+                style={{
+                  WebkitAppearance: 'none',
+                  MozAppearance: 'none'
+                }}
               >
                 <option value="popular">Popularity</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
                 <option value="name">Alphabetical</option>
               </select>
+              <ChevronDown size={16} className="text-on-surface-variant pointer-events-none" />
             </div>
             <div className="hidden md:flex items-center bg-white rounded-lg border border-outline-variant p-1">
               <button
                 onClick={() => setViewType('grid')}
-                className={`p-1.5 rounded ${viewType === 'grid' ? 'bg-gold-light/40 text-gold-dark' : 'text-on-surface-variant'}`}
+                className={`p-1.5 rounded transition-all ${viewType === 'grid' ? 'bg-gold-light/40 text-gold-dark' : 'text-on-surface-variant'}`}
               >
                 <LayoutGrid size={18} />
               </button>
               <button
                 onClick={() => setViewType('list')}
-                className={`p-1.5 rounded ${viewType === 'list' ? 'bg-gold-light/40 text-gold-dark' : 'text-on-surface-variant'}`}
+                className={`p-1.5 rounded transition-all ${viewType === 'list' ? 'bg-gold-light/40 text-gold-dark' : 'text-on-surface-variant'}`}
               >
                 <List size={18} />
               </button>
@@ -98,7 +103,7 @@ export default function ShopPage() {
               <nav className="flex flex-col gap-2">
                 <Link
                   to="/shop"
-                  className={`text-sm py-1.5 transition-colors ${!categoryId ? 'text-gold-dark font-bold' : 'text-on-surface-variant hover:text-gold-dark'}`}
+                  className={`px-4 py-2.5 rounded-lg border-2 font-bold text-sm transition-all ${!categoryId ? 'border-gold bg-gold-light/10 text-gold-dark shadow-md' : 'border-outline-variant text-on-surface-variant hover:border-gold/40'}`}
                 >
                   All Collections
                 </Link>
@@ -106,7 +111,7 @@ export default function ShopPage() {
                   <Link
                     key={cat.id}
                     to={`/shop/${cat.id}`}
-                    className={`text-sm py-1.5 transition-colors ${categoryId === cat.id ? 'text-gold-dark font-bold' : 'text-on-surface-variant hover:text-gold-dark'}`}
+                    className={`px-4 py-2.5 rounded-lg border-2 font-bold text-sm transition-all ${categoryId === cat.id ? 'border-gold bg-gold-light/10 text-gold-dark shadow-md' : 'border-outline-variant text-on-surface-variant hover:border-gold/40'}`}
                   >
                     {cat.name}
                   </Link>
@@ -116,7 +121,7 @@ export default function ShopPage() {
 
             <div className="space-y-4">
               <h3 className="font-serif text-lg font-bold text-on-surface">Filter by Price</h3>
-              <div className="space-y-4">
+              <div className="space-y-4 p-4 bg-surface-container/30 rounded-xl">
                 <input
                   type="range"
                   min="0"
@@ -124,11 +129,11 @@ export default function ShopPage() {
                   step="50"
                   value={priceRange[1]}
                   onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
-                  className="w-full accent-gold"
+                  className="w-full accent-gold cursor-pointer"
                 />
                 <div className="flex justify-between text-xs font-bold text-on-surface-variant">
-                  <span>Rs. 0</span>
-                  <span>Rs. {priceRange[1]}</span>
+                  <span className="px-3 py-1 bg-white rounded-md border border-outline-variant">Rs. 0</span>
+                  <span className="px-3 py-1 bg-gold-light/30 rounded-md border border-gold/20 text-gold-dark">Rs. {priceRange[1]}</span>
                 </div>
               </div>
             </div>
@@ -138,7 +143,9 @@ export default function ShopPage() {
               <p className="text-[11px] text-on-surface-variant leading-relaxed mb-4">
                 Can't find what you are looking for? Chat with our heritage expert.
               </p>
-              <a href="tel:+918074638357" className="text-xs font-bold text-charcoal hover:underline">Contact Support</a>
+              <a href="tel:+918074638357" className="inline-flex items-center gap-2 px-4 py-2 bg-gold text-charcoal text-xs font-bold rounded-md hover:shadow-gold-glow transition-all">
+                Contact Support
+              </a>
             </div>
           </aside>
 
@@ -149,58 +156,67 @@ export default function ShopPage() {
             </div>
 
             {filteredProducts.length > 0 ? (
-              <div className={viewType === 'grid' ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8" : "flex flex-col gap-6"}>
+              <div className={viewType === 'grid' ? "grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6" : "flex flex-col gap-6"}>
                 {filteredProducts.map((product) => (
-                  <div
-                    key={product.id}
-                    className={`glass-card group overflow-hidden ${viewType === 'list' ? 'flex flex-col md:flex-row h-auto md:h-64' : ''}`}
-                  >
-                    <Link
-                      to={`/product/${product.id}`}
-                      className={`relative overflow-hidden ${viewType === 'list' ? 'w-full md:w-64 h-64 md:h-full shrink-0' : 'aspect-[4/5]'}`}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-gold-light/20 to-spice-light/10 group-hover:scale-110 transition-transform duration-700" />
-                      <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                        <ShoppingBag size={48} className="text-gold" />
+                  <div key={product.id} className="bg-white">
+                    <Link to={`/product/${product.id}`} className="block relative mb-4">
+                      <div className="relative w-full aspect-square overflow-hidden border-4 border-gray-200">
+                        <img 
+                          src={product.image} 
+                          alt={product.name}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      <div className="absolute top-4 left-4 flex flex-col gap-2">
-                        {product.tags.map(tag => (
-                          <span key={tag} className="px-2 py-0.5 bg-white/90 backdrop-blur-md rounded-full text-[9px] font-bold text-gold-dark border border-gold/20 uppercase tracking-widest">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                      <button 
+                        onClick={(e) => { 
+                          e.preventDefault(); 
+                          isInWishlist(product.id) ? removeFromWishlist(product.id) : addToWishlist(product);
+                        }}
+                        className="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md"
+                      >
+                        <Heart 
+                          size={18} 
+                          className={isInWishlist(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-600'} 
+                        />
+                      </button>
                     </Link>
 
-                    <div className="p-6 flex flex-col justify-between flex-1">
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-1 text-gold-dark">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} size={10} fill={i < 4 ? "currentColor" : "none"} />
-                          ))}
-                        </div>
-                        <div>
-                          <Link to={`/product/${product.id}`}>
-                            <h3 className="font-serif text-lg font-bold text-on-surface hover:text-gold-dark transition-colors">{product.name}</h3>
-                          </Link>
-                          <p className="text-xs text-on-surface-variant italic">{product.tagline}</p>
-                        </div>
-                        {viewType === 'list' && (
-                          <p className="text-sm text-on-surface-variant line-clamp-2">{product.description}</p>
+                    <div className="space-y-2">
+                      <div className="flex flex-wrap gap-1">
+                        {product.categories?.slice(0, 3).map((cat, i) => (
+                          <span key={i} className="text-xs text-gray-500">{cat}.</span>
+                        ))}
+                      </div>
+
+                      <Link to={`/product/${product.id}`} className="block">
+                        <h3 className="font-medium text-gray-900 text-sm">
+                          {product.name}
+                        </h3>
+                      </Link>
+
+                      <div className="flex items-center gap-2">
+                        {Object.keys(product.prices).length > 1 && (
+                          <span className="text-gray-400 line-through text-sm">
+                            Rs. {Object.values(product.prices)[Object.values(product.prices).length - 1]}
+                          </span>
+                        )}
+                        <span className="font-semibold text-gray-900 text-base">
+                          Rs. {Object.values(product.prices)[0]}
+                        </span>
+                        {Object.keys(product.prices).length > 1 && (
+                          <span className="text-xs text-gray-500">
+                            {Object.keys(product.prices)[0]}
+                          </span>
                         )}
                       </div>
 
-                      <div className="flex items-center justify-between mt-6">
-                        <div className="flex flex-col">
-                          <span className="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Starts from</span>
-                          <span className="text-lg font-bold text-on-surface">Rs. {Object.values(product.prices)[0]}</span>
-                        </div>
-                        <button
-                          onClick={() => addItem(product, Object.keys(product.prices)[0])}
-                          className="flex items-center gap-2 px-5 py-2.5 bg-gold text-charcoal text-xs font-bold rounded-md hover:shadow-gold-glow transition-all"
+                      <div className="pt-1">
+                        <Link
+                          to={`/product/${product.id}`}
+                          className="w-full flex items-center justify-center px-4 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-full hover:bg-gray-700 transition-colors"
                         >
-                          Add to Cart
-                        </button>
+                          SELECT OPTIONS
+                        </Link>
                       </div>
                     </div>
                   </div>

@@ -3,12 +3,14 @@ import { useParams, Link } from 'react-router-dom';
 import { ShoppingBag, Star, ShieldCheck, Truck, RefreshCcw, ChevronRight, ChevronLeft, Plus, Minus, Heart } from 'lucide-react';
 import { products, getProductById, getProductsByCategory } from '../data/products';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function ProductPage() {
   const { id } = useParams();
   const product = getProductById(id);
   const { addItem } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const [ref, visible] = useScrollReveal(0.1);
 
   const [selectedWeight, setSelectedWeight] = useState('');
@@ -89,8 +91,14 @@ export default function ProductPage() {
                   {[...Array(5)].map((_, i) => <Star key={i} size={16} fill={i < 4 ? "currentColor" : "none"} strokeWidth={2} />)}
                   <span className="text-sm font-bold text-on-surface-variant ml-2">4.9 (48 Reviews)</span>
                 </div>
-                <button className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-error hover:border-error transition-all">
-                  <Heart size={20} />
+                <button 
+                  onClick={() => isInWishlist(product.id) ? removeFromWishlist(product.id) : addToWishlist(product)}
+                  className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center transition-all hover:border-error"
+                >
+                  <Heart 
+                    size={20} 
+                    className={isInWishlist(product.id) ? 'fill-red-500 text-red-500' : 'text-on-surface-variant hover:text-red-500'} 
+                  />
                 </button>
               </div>
 
