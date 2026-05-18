@@ -19,7 +19,6 @@ export default function WishlistPage() {
           </Link>
         </div>
       </div>
-      </div>
     );
   }
 
@@ -36,7 +35,10 @@ export default function WishlistPage() {
               <Link to={`/product/${product.id}`} className="block relative mb-4">
                 <div className="relative w-full aspect-square overflow-hidden border-4 border-gray-200">
                   <img 
-                    src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </Link>
 
@@ -66,7 +68,7 @@ export default function WishlistPage() {
                     onClick={() => removeFromWishlist(product.id)}
                     className="px-3 py-2 bg-red-50 text-red-600 rounded-full hover:bg-red-100 transition-colors"
                   >
-                    <Trash2 size={18} className="text-red-600" />
+                    <Trash2 size={18} />
                   </button>
                 </div>
               </div>
