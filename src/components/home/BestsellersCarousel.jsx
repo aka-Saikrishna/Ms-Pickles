@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, ShoppingBag } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ShoppingBag, Heart } from 'lucide-react';
 import gsap from 'gsap';
 import { getBestsellers } from '../../data/products';
 import { useCart } from '../../context/CartContext';
@@ -9,6 +9,11 @@ export default function BestsellersCarousel() {
   const scrollRef = useRef(null);
   const bestsellers = getBestsellers();
   const { addItem } = useCart();
+  const [wishlist, setWishlist] = useState({});
+
+  const toggleWishlist = (id) => {
+    setWishlist(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   const scroll = (direction) => {
     if (!scrollRef.current) return;
@@ -21,10 +26,10 @@ export default function BestsellersCarousel() {
   };
 
   return (
-    <section className="py-24 overflow-hidden" style={{ backgroundColor: '#fdf7f2' }}>
+    <section className="py-16 overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="font-sans text-4xl md:text-5xl font-extrabold text-gray-900">
+          <h2 className="font-sans text-3xl md:text-4xl font-extrabold text-gray-900">
             Shop bestsellers
           </h2>
         </div>
@@ -37,63 +42,70 @@ export default function BestsellersCarousel() {
           {bestsellers.map((product) => (
             <div
               key={product.id}
-              className="min-w-[240px] md:min-w-[280px] snap-start group bg-white rounded-3xl border border-gray-200 overflow-hidden"
+              className="min-w-[200px] md:min-w-[220px] snap-start bg-white"
             >
               {/* Product Image */}
-              <Link to={`/product/${product.id}`} className="block relative aspect-[4/3] overflow-hidden p-1">
-                <img 
-                  src={product.image} 
-                  alt={product.name}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                {/* Sale Badge */}
-                {product.tags.includes('BESTSELLER') && (
-                  <div className="absolute top-2 right-2 px-3 py-1 bg-gray-800 text-white text-xs font-semibold rounded-full">
-                    Sale!
-                  </div>
-                )}
+              <Link to={`/product/${product.id}`} className="block relative mb-4">
+                <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-gray-200">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </div>
+                {/* Wishlist Icon */}
+                <button 
+                  onClick={(e) => { e.preventDefault(); toggleWishlist(product.id); }}
+                  className="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md"
+                >
+                  <Heart 
+                    size={18} 
+                    className={wishlist[product.id] ? 'fill-red-500 text-red-500' : 'text-gray-600'} 
+                  />
+                </button>
               </Link>
 
               {/* Content */}
-              <div className="p-3 space-y-2">
-                <div>
-                  <Link to={`/product/${product.id}`} className="block">
-                    <h3 className="font-medium text-gray-900 text-base leading-snug hover:text-gray-600 transition-colors">
-                      {product.name}
-                    </h3>
-                  </Link>
+              <div className="space-y-2">
+                {/* Category Tags */}
+                <div className="flex flex-wrap gap-1">
+                  {product.categories?.slice(0, 3).map((cat, i) => (
+                    <span key={i} className="text-xs text-gray-500">{cat}.</span>
+                  ))}
                 </div>
+
+                {/* Product Name */}
+                <Link to={`/product/${product.id}`} className="block">
+                  <h3 className="font-medium text-gray-900 text-sm">
+                    {product.name}
+                  </h3>
+                </Link>
 
                 {/* Price */}
                 <div className="flex items-center gap-2">
                   {Object.keys(product.prices).length > 1 && (
-                    <span className="text-gray-500 line-through text-sm">
+                    <span className="text-gray-400 line-through text-sm">
                       Rs. {Object.values(product.prices)[Object.values(product.prices).length - 1]}
                     </span>
                   )}
-                  <span className="font-semibold text-gray-900 text-lg">
+                  <span className="font-semibold text-gray-900 text-base">
                     Rs. {Object.values(product.prices)[0]}
                   </span>
+                  {Object.keys(product.prices).length > 1 && (
+                    <span className="text-xs text-gray-500">
+                      {Object.keys(product.prices)[0]}
+                    </span>
+                  )}
                 </div>
 
                 {/* Button */}
-                <div className="pt-2">
-                  {Object.keys(product.prices).length > 1 ? (
-                    <Link
-                      to={`/product/${product.id}`}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 text-white text-sm font-semibold rounded-full hover:bg-gray-700 transition-colors"
-                    >
-                      Select Options
-                    </Link>
-                  ) : (
-                    <button
-                      onClick={() => addItem(product, Object.keys(product.prices)[0])}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 text-white text-sm font-semibold rounded-full hover:bg-gray-700 transition-colors"
-                    >
-                      Add To Cart
-                      <ShoppingBag size={16} />
-                    </button>
-                  )}
+                <div className="pt-1">
+                  <Link
+                    to={`/product/${product.id}`}
+                    className="w-full flex items-center justify-center px-4 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-full hover:bg-gray-700 transition-colors"
+                  >
+                    SELECT OPTIONS
+                  </Link>
                 </div>
               </div>
             </div>
